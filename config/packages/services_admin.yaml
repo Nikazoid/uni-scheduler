@@ -1,0 +1,5 @@
+services:
+    App\Admin\LecturerAdmin:
+        arguments: [~, App\Entity\Lecturer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Lecturer, group: Lecturer }

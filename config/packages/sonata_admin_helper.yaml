@@ -1,0 +1,9 @@
+services:
+  Sonata\AdminBundle\Command\CreateClassCacheCommand:
+    public: true
+    deprecated: '%service_id% is deprecated'
+  sonata.core.model.adapter.chain:
+    class: Sonata\Doctrine\Adapter\AdapterChain
+  sonata.core.model.adapter.doctrine_orm:
+    autowire: true
+    class: Sonata\Doctrine\Adapter\ORM\DoctrineORMAdapter
