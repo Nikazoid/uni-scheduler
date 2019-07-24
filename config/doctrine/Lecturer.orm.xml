@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\Lecturer">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="firstName"/>
+        <field name="middleName"/>
+        <field name="lastName"/>
+        <field name="phone" nullable="true"/>
+        <field name="email" unique="true"/>
+        <field name="leadingExercises" nullable="true" />
+        <field name="academicTitle" nullable="true"/>
+        <field name="scientificTitle" nullable="true"/>
+        <field name="contract" nullable="true"/>
+        <field name="estHours" nullable="true"/>
+    </entity>
+</doctrine-mapping>
