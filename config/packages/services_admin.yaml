@@ -10,3 +10,8 @@ services:
             - { name: sonata.admin, manager_type: orm, label: User, group: User }
         calls:
             - [setPasswordEncoder, ['@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface']]
+
+    App\Admin\DisciplineAdmin:
+        arguments: [~, App\Entity\Discipline, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Discipline, group: Discipline }
