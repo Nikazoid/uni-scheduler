@@ -3,3 +3,10 @@ services:
         arguments: [~, App\Entity\Lecturer, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Lecturer, group: Lecturer }
+
+    App\Admin\UserAdmin:
+        arguments: [~, App\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User, group: User }
+        calls:
+            - [setPasswordEncoder, ['@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface']]
