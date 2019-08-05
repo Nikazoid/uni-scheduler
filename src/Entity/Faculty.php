@@ -58,4 +58,8 @@ class Faculty
     {
         $this->rooms = $rooms;
     }
+
+    public function __toString() {
+        return $this->abbreviation;
+    }
 }

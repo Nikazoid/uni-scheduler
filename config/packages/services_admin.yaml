@@ -25,3 +25,8 @@ services:
         arguments: [~, App\Entity\Faculty, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Faculty, group: Faculty }
+
+    App\Admin\RoomsAdmin:
+        arguments: [~, App\Entity\Rooms, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Rooms, group: Rooms }
