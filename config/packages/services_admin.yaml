@@ -20,3 +20,8 @@ services:
         arguments: [~, App\Entity\Specialty, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Specialty, group: Specialty }
+
+    App\Admin\FacultyAdmin:
+        arguments: [~, App\Entity\Faculty, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Faculty, group: Faculty }
