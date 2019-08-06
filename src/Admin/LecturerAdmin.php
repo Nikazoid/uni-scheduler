@@ -6,7 +6,10 @@ use App\Entity\Lecturer;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 
@@ -24,14 +27,21 @@ class LecturerAdmin extends AbstractAdmin
                 'required' => false,
             ])
             ->add('leadingExercises')
-            ->add('academicTitle')
-            ->add('scientificTitle')
+            ->add('academicTitle', ModelType::class, [
+                'label' => 'Академична Титла',
+                'btn_add' => false
+            ])
+            ->add('scientificTitle', ModelType::class, [
+                'label' => 'Научни Титла',
+                'multiple' => true,
+                'btn_add' => false
+            ])
             ->add('contract', ChoiceType::class, [
                 'required' => false,
                 'choices' => [
-                    'Primary' => 'Primary Employment',
-                    'Guest' => 'Guest',
-                    'Civil' => 'Civil',
+                    'Primary' => Lecturer::LECTURER_CONTRACT_PRIMARY,
+                    'Guest' => Lecturer::LECTURER_CONTRACT_GUEST,
+                    'Civil' => Lecturer::LECTURER_CONTRACT_CIVIL
                 ],
             ])
             ->add('email')
@@ -48,6 +58,7 @@ class LecturerAdmin extends AbstractAdmin
             ->add('middleName')
             ->add('lastName')
             ->add('academicTitle')
+            ->add('scientificTitle')
             ->add('leadingExercises')
             ->add('_action', null, [
                 'actions' => [

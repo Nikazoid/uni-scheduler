@@ -11,9 +11,13 @@
         <field name="lastName"/>
         <field name="phone" nullable="true"/>
         <field name="email" unique="true"/>
-        <field name="leadingExercises" nullable="true" />
-        <field name="academicTitle" nullable="true"/>
-        <field name="scientificTitle" nullable="true"/>
+        <field name="leadingExercises" nullable="true"/>
+        <many-to-one field="academicTitle" target-entity="AcademicTitle"/>
+        <many-to-many field="scientificTitle" target-entity="ScientificTitle">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-many>
         <field name="contract" nullable="true"/>
         <field name="estHours" nullable="true"/>
     </entity>

@@ -2,8 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
+
 class Lecturer
 {
+    public const LECTURER_CONTRACT_GUEST = 'Guest';
+    public const LECTURER_CONTRACT_CIVIL = 'Civil';
+    public const LECTURER_CONTRACT_PRIMARY = 'Primary';
+
     /**
      * @var int
      */
@@ -40,12 +46,12 @@ class Lecturer
     private $leadingExercises;
 
     /**
-     * @var string|null
+     * @var AcademicTitle
      */
     private $academicTitle;
 
     /**
-     * @var string|null
+     * @var ScientificTitle[]|Collection
      */
     private $scientificTitle;
 
@@ -124,22 +130,22 @@ class Lecturer
         $this->phone = $phone;
     }
 
-    public function getAcademicTitle(): ?string
+    public function getAcademicTitle()
     {
         return $this->academicTitle;
     }
 
-    public function setAcademicTitle(?string $academicTitle)
+    public function setAcademicTitle($academicTitle): void
     {
         $this->academicTitle = $academicTitle;
     }
 
-    public function getScientificTitle(): ?string
+    public function getScientificTitle(): ?Collection
     {
         return $this->scientificTitle;
     }
 
-    public function setScientificTitle(?string $scientificTitle)
+    public function setScientificTitle($scientificTitle): void
     {
         $this->scientificTitle = $scientificTitle;
     }
@@ -162,5 +168,10 @@ class Lecturer
     public function setEstHours(?int $estHours)
     {
         $this->estHours = $estHours;
+    }
+
+    public function __toString()
+    {
+        return $this->firstName . " " . $this->middleName . " " . $this->lastName;
     }
 }
