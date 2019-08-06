@@ -51,6 +51,6 @@ class AcademicTitle
 
     public function __toString()
     {
-        return 'Титлата е добавена!';
+        return $this->name;
     }
 }
