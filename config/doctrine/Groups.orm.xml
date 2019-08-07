@@ -2,13 +2,14 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Entity\Specialty">
+    <entity name="App\Entity\Groups">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
         <field name="name"/>
-        <field name="abbreviation"/>
-        <field name="startYear" type="date"/>
-        <field name="endYear" type="date"/>
+        <field name="subGroup"/>
+        <many-to-one field="specialty" target-entity="Specialty"/>
+        <field name="studentNumber" type="integer"/>
+        <field name="educationType"/>
     </entity>
 </doctrine-mapping>

@@ -20,9 +20,6 @@ class SpecialtyAdmin extends AbstractAdmin
             ->add('abbreviation', null, [
                 'label' => 'Съкращение'
             ])
-            ->add('groups', null, [
-                'label' => 'Групи'
-            ])
             ->add('startYear', DatePickerType::class, [
                 'label' => 'Година на Започване',
                 'dp_view_mode'          => 'months',
@@ -43,7 +40,6 @@ class SpecialtyAdmin extends AbstractAdmin
             ->addIdentifier('id')
             ->add('name')
             ->add('abbreviation')
-            ->add('groups')
             ->add('startYear')
             ->add('endYear')
             ->add('_action', null, [
@@ -62,7 +58,6 @@ class SpecialtyAdmin extends AbstractAdmin
             ->with('Discipline')
             ->add('name')
             ->add('abbreviation')
-            ->add('groups')
             ->add('startYear')
             ->add('endYear')
             ->end()

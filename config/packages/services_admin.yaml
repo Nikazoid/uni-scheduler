@@ -40,3 +40,8 @@ services:
         arguments: [~, App\Entity\ScientificTitle, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: ScientificTitle, group: Lecturer }
+
+    App\Admin\GroupsAdmin:
+        arguments: [~, App\Entity\Groups, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Groups, group: Specialty }
