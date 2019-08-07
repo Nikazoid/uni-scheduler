@@ -22,11 +22,6 @@ class Specialty
     private $abbreviation;
 
     /**
-     * @var string
-     */
-    private $groups;
-
-    /**
      * @var DateTime
      */
     private $startYear;
@@ -66,16 +61,6 @@ class Specialty
         $this->abbreviation = $abbreviation;
     }
 
-    public function getGroups(): ?string
-    {
-        return $this->groups;
-    }
-
-    public function setGroups(string $groups): void
-    {
-        $this->groups = $groups;
-    }
-
     public function getStartYear(): ?DateTime
     {
         return $this->startYear;
@@ -94,5 +79,10 @@ class Specialty
     public function setEndYear(DateTime $endYear): void
     {
         $this->endYear = $endYear;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
