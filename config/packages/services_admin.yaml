@@ -44,4 +44,9 @@ services:
     App\Admin\GroupsAdmin:
         arguments: [~, App\Entity\Groups, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Groups, group: Specialty }
+            - { name: sonata.admin, manager_type: orm, label: Groups, group: Groups }
+
+    App\Admin\SubGroupsAdmin:
+        arguments: [~, App\Entity\SubGroups, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: SubGroups, group: Groups }
