@@ -50,3 +50,8 @@ services:
         arguments: [~, App\Entity\SubGroups, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: SubGroups, group: Groups }
+
+    App\Admin\LeadingExerciseAdmin:
+        arguments: [~, App\Entity\LeadingExercise, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: LeadingExercise, group: Lecturer }
