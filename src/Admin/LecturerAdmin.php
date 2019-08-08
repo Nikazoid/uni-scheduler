@@ -6,13 +6,11 @@ use App\Entity\Lecturer;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
-
 
 class LecturerAdmin extends AbstractAdmin
 {
@@ -26,7 +24,14 @@ class LecturerAdmin extends AbstractAdmin
             ->add('phone', TelType::class,[
                 'required' => false,
             ])
-            ->add('leadingExercises')
+            ->add('leadingExercises', CollectionType::class, [
+                'label' => 'Водещи занятия',
+                'btn_add' => 'добави',
+            ], [
+                'admin_code' => LeadingExerciseAdmin::class,
+                'edit' => 'inline',
+                'inline' => 'table',
+            ])
             ->add('academicTitle', ModelType::class, [
                 'label' => 'Академична Титла',
                 'btn_add' => false

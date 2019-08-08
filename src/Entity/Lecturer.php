@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class Lecturer
@@ -41,7 +42,7 @@ class Lecturer
     private $phone;
 
     /**
-     * @var string|null
+     * @var LeadingExercise[]|ArrayCollection
      */
     private $leadingExercises;
 
@@ -64,6 +65,12 @@ class Lecturer
      * @var int|null
      */
     private $estHours;
+
+    public function __construct()
+    {
+        $this->scientificTitle = new ArrayCollection();
+        $this->leadingExercises = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -115,14 +122,21 @@ class Lecturer
         return $this->phone;
     }
 
-    public function getLeadingExercises(): ?string
+    public function getLeadingExercises()
     {
         return $this->leadingExercises;
     }
 
-    public function setLeadingExercises(?string $leadingExercises)
+    public function addLeadingExercises(LeadingExercise $leadingExercises)
     {
-        $this->leadingExercises = $leadingExercises;
+        if (!$this->leadingExercises->contains($leadingExercises)) {
+            $this->leadingExercises->add($leadingExercises);
+        }
+    }
+
+    public function removeLeadingExercises(LeadingExercise $leadingExercises)
+    {
+        $this->leadingExercises->removeElement($leadingExercises);
     }
 
     public function setPhone(string $phone)
