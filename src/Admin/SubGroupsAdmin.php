@@ -5,8 +5,6 @@ namespace App\Admin;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelListType;
-use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class SubGroupsAdmin extends AbstractAdmin
@@ -20,10 +18,6 @@ class SubGroupsAdmin extends AbstractAdmin
                 ])
                 ->add('studentNumber', null, [
                     'label' => 'Брой студенти'
-                ])
-                ->add('groups', ModelListType::class, [
-                    'label' => 'Група',
-                    'btn_add' => false
                 ])
             ->end()
         ;

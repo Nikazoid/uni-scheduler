@@ -8,6 +8,5 @@
         </id>
         <field name="name"/>
         <field name="studentNumber"/>
-        <many-to-one field="groups" target-entity="Groups"/>
     </entity>
 </doctrine-mapping>

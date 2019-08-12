@@ -6,6 +6,7 @@ use App\Entity\Groups;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -19,8 +20,13 @@ class GroupsAdmin extends AbstractAdmin
                 ->add('name', null, [
                     'label' => 'Име на Групата'
                 ])
-                ->add('subGroup', null, [
-                    'label' => 'Под групи'
+                ->add('subGroups', CollectionType::class, [
+                    'label' => 'Под Групи',
+                    'btn_add' => 'добави',
+                ], [
+                    'admin_code' => SubGroupsAdmin::class,
+                    'edit' => 'inline',
+                    'inline' => 'table',
                 ])
                 ->add('specialty', ModelType::class, [
                     'label' => 'Специалност',
@@ -45,7 +51,7 @@ class GroupsAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->add('name')
-            ->add('subGroup')
+            ->add('subGroups')
             ->add('specialty')
             ->add('studentNumber')
             ->add('educationType')
@@ -64,7 +70,7 @@ class GroupsAdmin extends AbstractAdmin
         $showMapper
             ->with('Група')
                 ->add('name')
-                ->add('subGroup')
+                ->add('subGroups')
                 ->add('specialty')
                 ->add('studentNumber')
                 ->add('educationType')

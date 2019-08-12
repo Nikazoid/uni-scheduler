@@ -15,11 +15,6 @@ class SubGroups
     private $name;
 
     /**
-     * @var Groups
-     */
-    private $groups;
-
-    /**
      * @var int
      */
     private $studentNumber;
@@ -39,16 +34,6 @@ class SubGroups
         $this->name = $name;
     }
 
-    public function getGroups(): ?Groups
-    {
-        return $this->groups;
-    }
-
-    public function setGroups(Groups $groups): void
-    {
-        $this->groups = $groups;
-    }
-
     public function getStudentNumber(): ?int
     {
         return $this->studentNumber;
@@ -57,5 +42,10 @@ class SubGroups
     public function setStudentNumber(int $studentNumber): void
     {
         $this->studentNumber = $studentNumber;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
