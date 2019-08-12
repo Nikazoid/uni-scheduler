@@ -19,6 +19,11 @@ class SubGroups
      */
     private $studentNumber;
 
+    /**
+     * @var Groups
+     */
+    private $groups;
+
     public function getId(): int
     {
         return $this->id;
@@ -42,6 +47,16 @@ class SubGroups
     public function setStudentNumber(int $studentNumber): void
     {
         $this->studentNumber = $studentNumber;
+    }
+
+    public function getGroups(): ?Groups
+    {
+        return $this->groups;
+    }
+
+    public function setGroups(Groups $groups): void
+    {
+        $this->groups = $groups;
     }
 
     public function __toString()

@@ -108,6 +108,6 @@ class Groups
 
     public function __toString()
     {
-        return $this->name;
+        return "Група: " . $this->name . " Спец. " . $this->specialty->getAbbreviation();
     }
 }

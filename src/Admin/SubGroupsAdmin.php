@@ -2,10 +2,14 @@
 
 namespace App\Admin;
 
+use App\Entity\Groups;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SubGroupsAdmin extends AbstractAdmin
 {
@@ -13,11 +17,24 @@ class SubGroupsAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Под Група')
-                ->add('name', null, [
-                    'label' => 'Име на Под Групата'
+                ->add('name', ChoiceType::class, [
+                    'label' => 'Име на Под Групата',
+                    'choices' => [
+                        'a' => 'a',
+                        'b' => 'b',
+                        'c' => 'c',
+                        'd' => 'd',
+                        'e' => 'e',
+                        'f' => 'f',
+                        'g' => 'g',
+                    ],
                 ])
                 ->add('studentNumber', null, [
                     'label' => 'Брой студенти'
+                ])
+                ->add('groups', ModelType::class, [
+                    'label' => 'Група',
+                    'btn_add' => false
                 ])
             ->end()
         ;
