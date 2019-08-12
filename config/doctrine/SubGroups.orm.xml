@@ -7,6 +7,9 @@
             <generator strategy="AUTO"/>
         </id>
         <field name="name"/>
-        <field name="studentNumber"/>
+        <field name="studentNumber" type="integer"/>
+        <many-to-one field="groups" target-entity="Groups" inversed-by="subGroups">
+            <join-column name="groups_id" referenced-column-name="id" />
+        </many-to-one>
     </entity>
 </doctrine-mapping>
