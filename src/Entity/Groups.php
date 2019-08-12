@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Groups
 {
     public const GROUPS_EDUCATION_TYPE_REGULAR = 'Редовно';
@@ -18,9 +20,9 @@ class Groups
     private $name;
 
     /**
-     * @var string
+     * @var SubGroups[]|ArrayCollection
      */
-    private $subGroup;
+    private $subGroups;
 
     /**
      * @var Specialty
@@ -37,6 +39,11 @@ class Groups
      */
     private $educationType;
 
+    public function __construct()
+    {
+        $this->subGroups = new ArrayCollection();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -52,14 +59,21 @@ class Groups
         $this->name = $name;
     }
 
-    public function getSubGroup(): ?string
+    public function getSubGroups()
     {
-        return $this->subGroup;
+        return $this->subGroups;
     }
 
-    public function setSubGroup(string $subGroup): void
+    public function addSubGroups(SubGroups $subGroups)
     {
-        $this->subGroup = $subGroup;
+        if (!$this->subGroups->contains($subGroups)) {
+            $this->subGroups->add($subGroups);
+        }
+    }
+
+    public function removeSubGroups(SubGroups $subGroups)
+    {
+        $this->subGroups->removeElement($subGroups);
     }
 
     public function getSpecialty(): ?Specialty

@@ -7,7 +7,11 @@
             <generator strategy="AUTO"/>
         </id>
         <field name="name"/>
-        <field name="subGroup"/>
+        <many-to-many field="subGroups" target-entity="SubGroups" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-many>
         <many-to-one field="specialty" target-entity="Specialty"/>
         <field name="studentNumber" type="integer"/>
         <field name="educationType"/>
