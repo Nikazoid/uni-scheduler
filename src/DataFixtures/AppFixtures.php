@@ -10,18 +10,18 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
-    const LECTURERS = [
-      [
-          'firstName' => 'Nikolai',
-          'middleName' => 'Tsvetanov',
-          'lastName' => 'Georgiev',
-          'email' => 'nikolai.georgiev@gmail.com',
-          'academicTitle' => 'Assistant',
-          'scientificTitle' => 'Engineer',
-          'contract' => 'Guest',
-          'estHours' => '90',
-      ]
-    ];
+//    const LECTURERS = [
+//      [
+//          'firstName' => 'Nikolai',
+//          'middleName' => 'Tsvetanov',
+//          'lastName' => 'Georgiev',
+//          'email' => 'nikolai.georgiev@gmail.com',
+//          'academicTitle' => 'Assistant',
+//          'scientificTitle' => 'Engineer',
+//          'contract' => 'Guest',
+//          'estHours' => '90',
+//      ]
+//    ];
 
     const USERS = [
         [
@@ -52,19 +52,19 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-        foreach (self::LECTURERS as $data) {
-            $lecturer = new Lecturer();
-            $lecturer->setFirstName($data['firstName']);
-            $lecturer->setMiddleName($data['middleName']);
-            $lecturer->setLastName($data['lastName']);
-            $lecturer->setEmail($data['email']);
-            $lecturer->setAcademicTitle($data['academicTitle']);
-            $lecturer->setScientificTitle($data['scientificTitle']);
-            $lecturer->setContract($data['contract']);
-            $lecturer->setEstHours($data['estHours']);
-
-            $manager->persist($lecturer);
-        }
+//        foreach (self::LECTURERS as $data) {
+//            $lecturer = new Lecturer();
+//            $lecturer->setFirstName($data['firstName']);
+//            $lecturer->setMiddleName($data['middleName']);
+//            $lecturer->setLastName($data['lastName']);
+//            $lecturer->setEmail($data['email']);
+//            $lecturer->setAcademicTitle($data['academicTitle']);
+//            $lecturer->setScientificTitle($data['scientificTitle']);
+//            $lecturer->setContract($data['contract']);
+//            $lecturer->setEstHours($data['estHours']);
+//
+//            $manager->persist($lecturer);
+//        }
 
         $manager->flush();
     }
