@@ -11,7 +11,7 @@ class Exercise
      */
     private $id;
 
-    /**
+    /**nov commit
      * @var SubGroups
      */
     private $subGroups;
