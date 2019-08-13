@@ -88,4 +88,9 @@ class Discipline
     {
         $this->labExercisesCount = $labExercisesCount;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

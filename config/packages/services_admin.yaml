@@ -55,3 +55,8 @@ services:
         arguments: [~, App\Entity\LeadingExercise, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: LeadingExercise, group: Lecturer }
+
+    App\Admin\ExerciseAdmin:
+        arguments: [~, App\Entity\Exercise, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Exercise, group: Lecturer }

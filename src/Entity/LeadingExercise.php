@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class LeadingExercise
 {
     public const LEADING_EXERCISE_TYPE_SEMINAR = 'семинарно';
@@ -20,7 +22,17 @@ class LeadingExercise
     private $specialty;
 
     /**
-     * @var string|null
+     * @var Discipline
+     */
+    private $discipline;
+
+    /**
+     * @var Lecturer
+     */
+    private $lecturer;
+
+    /**
+     * @var Exercise[]|ArrayCollection
      */
     private $exercise;
 
@@ -44,14 +56,41 @@ class LeadingExercise
         $this->specialty = $specialty;
     }
 
-    public function getExercise(): ?string
+    public function getLecturer(): ?Lecturer
+    {
+        return $this->lecturer;
+    }
+
+    public function setLecturer(Lecturer $lecturer): void
+    {
+        $this->lecturer = $lecturer;
+    }
+
+    public function getExercise()
     {
         return $this->exercise;
     }
 
-    public function setExercise(?string $exercise): void
+    public function addExercise(Exercise $exercise)
     {
-        $this->exercise = $exercise;
+        if (!$this->exercise->contains($exercise)) {
+            $this->exercise->add($exercise);
+        }
+    }
+
+    public function removeExercise(Exercise $exercise)
+    {
+        $this->exercise->removeElement($exercise);
+    }
+
+    public function getDiscipline(): ?Discipline
+    {
+        return $this->discipline;
+    }
+
+    public function setDiscipline(Discipline $discipline): void
+    {
+        $this->discipline = $discipline;
     }
 
     public function getExerciseType(): ?string
@@ -66,6 +105,17 @@ class LeadingExercise
 
     public function __toString()
     {
-        return $this->specialty->getAbbreviation() . " " . $this->exercise . " " . $this->exerciseType;
+        $dateStart = $this->specialty->getStartYear()->format('Y');
+        $dateEnd = $this->specialty->getEndYear()->format('Y');
+
+        return
+            $this->specialty->getAbbreviation() . " " .
+            $dateStart . "/" .
+            $dateEnd . " " .
+            $this->discipline->getAbbreviation() . " " .
+            $this->lecturer->getFirstName() . " " .
+            $this->lecturer->getLastName() . ", " .
+            $this->getExerciseType()
+        ;
     }
 }
