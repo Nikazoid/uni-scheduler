@@ -83,6 +83,8 @@ class Specialty
 
     public function __toString()
     {
-        return $this->name;
+        $dateStart = $this->startYear->format('Y');
+        $dateEnd = $this->endYear->format('Y');
+        return $this->name . " " . $dateStart . "/" . $dateEnd;
     }
 }

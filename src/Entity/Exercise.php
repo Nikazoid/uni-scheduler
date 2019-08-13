@@ -12,14 +12,9 @@ class Exercise
     private $id;
 
     /**
-     * @var Discipline
+     * @var SubGroups
      */
-    private $discipline;
-
-    /**
-     * @var Groups
-     */
-    private $groups;
+    private $subGroups;
 
     /**
      * @var Rooms
@@ -42,114 +37,77 @@ class Exercise
     private $end;
 
     /**
-     * @return int
+     * @var LeadingExercise
      */
+    private $leadingExercise;
+
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return Discipline
-     */
-    public function getDiscipline(): Discipline
-    {
-        return $this->discipline;
-    }
-
-    /**
-     * @param Discipline $discipline
-     */
-    public function setDiscipline(Discipline $discipline): void
-    {
-        $this->discipline = $discipline;
-    }
-
-    /**
-     * @return Groups
-     */
-    public function getGroups(): Groups
-    {
-        return $this->groups;
-    }
-
-    /**
-     * @param Groups $groups
-     */
-    public function setGroups(Groups $groups): void
-    {
-        $this->groups = $groups;
-    }
-
-    /**
-     * @return Rooms
-     */
-    public function getRooms(): Rooms
+    public function getRooms(): ?Rooms
     {
         return $this->rooms;
     }
 
-    /**
-     * @param Rooms $rooms
-     */
     public function setRooms(Rooms $rooms): void
     {
         $this->rooms = $rooms;
     }
 
-    /**
-     * @return string
-     */
-    public function getDayName(): string
+    public function getSubGroups(): ?SubGroups
+    {
+        return $this->subGroups;
+    }
+
+    public function setSubGroups(SubGroups $subGroups): void
+    {
+        $this->subGroups = $subGroups;
+    }
+
+    public function getLeadingExercise(): ?LeadingExercise
+    {
+        return $this->leadingExercise;
+    }
+
+    public function setLeadingExercise(LeadingExercise $leadingExercise): void
+    {
+        $this->leadingExercise = $leadingExercise;
+    }
+
+    public function getDayName(): ?string
     {
         return $this->dayName;
     }
 
-    /**
-     * @param string $dayName
-     */
     public function setDayName(string $dayName): void
     {
         $this->dayName = $dayName;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getStart(): DateTime
+    public function getStart(): ?DateTime
     {
         return $this->start;
     }
 
-    /**
-     * @param DateTime $start
-     */
     public function setStart(DateTime $start): void
     {
         $this->start = $start;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getEnd(): DateTime
+    public function getEnd(): ?DateTime
     {
         return $this->end;
     }
 
-    /**
-     * @param DateTime $end
-     */
     public function setEnd(DateTime $end): void
     {
         $this->end = $end;
+    }
+
+    public function __toString()
+    {
+        return 'Занятие ' . $this->getId();
     }
 }
