@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use App\Entity\Exercise;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -45,6 +46,13 @@ class ExerciseAdmin extends AbstractAdmin
                         'Петък' => 'Friday',
                     ],
                 ])
+                ->add('semesterSplit', ChoiceType::class, [
+                    'label' => 'Име на семестъра',
+                    'choices' => [
+                        'Зимен' => Exercise::EXERCISE_SEMESTER_SPLIT_WINTER,
+                        'Летен' => Exercise::EXERCISE_SEMESTER_SPLIT_SUMMER
+                    ],
+                ])
             ->end()
         ;
     }
@@ -58,6 +66,7 @@ class ExerciseAdmin extends AbstractAdmin
             ->add('start')
             ->add('end')
             ->add('dayName')
+            ->add('semesterSplit')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -77,6 +86,7 @@ class ExerciseAdmin extends AbstractAdmin
                 ->add('start')
                 ->add('end')
                 ->add('dayName')
+                ->add('semesterSplit')
             ->end()
         ;
     }
