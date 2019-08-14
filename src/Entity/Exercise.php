@@ -6,12 +6,12 @@ use DateTime;
 
 class Exercise
 {
-    /**sssss
+    /**
      * @var int
      */
     private $id;
 
-    /**nov commit
+    /**
      * @var SubGroups
      */
     private $subGroups;
