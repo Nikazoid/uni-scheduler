@@ -6,6 +6,9 @@ use DateTime;
 
 class Exercise
 {
+    public const EXERCISE_SEMESTER_SPLIT_WINTER = 'зимен';
+    public const EXERCISE_SEMESTER_SPLIT_SUMMER = 'летен';
+
     /**
      * @var int
      */
@@ -40,6 +43,11 @@ class Exercise
      * @var LeadingExercise
      */
     private $leadingExercise;
+
+    /**
+     * @var string
+     */
+    private $semesterSplit;
 
     public function getId(): int
     {
@@ -104,6 +112,16 @@ class Exercise
     public function setEnd(DateTime $end): void
     {
         $this->end = $end;
+    }
+
+    public function getSemesterSplit(): ?string
+    {
+        return $this->semesterSplit;
+    }
+
+    public function setSemesterSplit(string $semesterSplit): void
+    {
+        $this->semesterSplit = $semesterSplit;
     }
 
     public function __toString()

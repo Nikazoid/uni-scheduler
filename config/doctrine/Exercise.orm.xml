@@ -13,5 +13,6 @@
         <field name="start" type="date"/>
         <field name="end" type="date"/>
         <field name="dayName"/>
+        <field name="semesterSplit"/>
     </entity>
 </doctrine-mapping>
