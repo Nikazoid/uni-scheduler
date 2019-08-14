@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lecturers{% endblock %}
+
+{% block body %}
+    <h1>Lecturers</h1>
+    <div>
+        {% for item in lecturer %}
+            <div class="lecturer">
+                <a href="#">
+                    <span>
+                        {% for value in item.scientificTitle %}
+                            {{ value.abbreviation }}
+                        {% endfor %}
+                        {{ item.firstName }} {{ item.middleName }} {{ item.lastName }}
+                    </span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
