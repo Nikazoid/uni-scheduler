@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Faculty
 {
     /**
@@ -20,7 +22,7 @@ class Faculty
     private $abbreviation;
 
     /**
-     * @var string
+     * @var Rooms[]|ArrayCollection
      */
     private $rooms;
 
@@ -49,14 +51,21 @@ class Faculty
         $this->abbreviation = $abbreviation;
     }
 
-    public function getRooms(): ?string
+    public function getRooms()
     {
         return $this->rooms;
     }
 
-    public function setRooms(string $rooms): void
+    public function addRooms(Rooms $rooms)
     {
-        $this->rooms = $rooms;
+        if (!$this->rooms->contains($rooms)) {
+            $this->rooms->add($rooms);
+        }
+    }
+
+    public function removeRooms(Rooms $rooms)
+    {
+        $this->rooms->removeElement($rooms);
     }
 
     public function __toString() {

@@ -20,11 +20,6 @@ class FacultyAdmin extends AbstractAdmin
                     'label' => 'Съкращение'
                 ])
             ->end()
-            ->with('Кабинети')
-                ->add('rooms', null, [
-                    'label' => 'Стаи'
-                ])
-            ->end()
         ;
     }
 
