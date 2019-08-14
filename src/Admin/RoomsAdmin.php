@@ -18,7 +18,9 @@ class RoomsAdmin extends AbstractAdmin
             ])
             ->add('faculty', ModelListType::class, [
                 'label' => 'Факултет',
-                'btn_add' => false
+                'btn_add' => false,
+                'btn_delete' => false,
+                'btn_edit' => false,
             ])
             ->add('capacity', null, [
                 'label' => 'Капацитет'

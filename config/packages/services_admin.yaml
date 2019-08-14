@@ -2,61 +2,61 @@ services:
     App\Admin\LecturerAdmin:
         arguments: [~, App\Entity\Lecturer, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Lecturer, group: Lecturer }
+            - { name: sonata.admin, manager_type: orm, label: Лектори, group: Лектори }
 
     App\Admin\UserAdmin:
         arguments: [~, App\Entity\User, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: User, group: User }
+            - { name: sonata.admin, manager_type: orm, label: Потребители, group: Потребители }
         calls:
             - [setPasswordEncoder, ['@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface']]
 
     App\Admin\DisciplineAdmin:
         arguments: [~, App\Entity\Discipline, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Discipline, group: Discipline }
+            - { name: sonata.admin, manager_type: orm, label: Дисциплини, group: Дисциплини }
 
     App\Admin\SpecialtyAdmin:
         arguments: [~, App\Entity\Specialty, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Specialty, group: Specialty }
+            - { name: sonata.admin, manager_type: orm, label: Специалности, group: Специалности }
 
     App\Admin\FacultyAdmin:
         arguments: [~, App\Entity\Faculty, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Faculty, group: Faculty }
+            - { name: sonata.admin, manager_type: orm, label: Факултети, group: Факултети }
 
     App\Admin\RoomsAdmin:
         arguments: [~, App\Entity\Rooms, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Rooms, group: Rooms }
+            - { name: sonata.admin, manager_type: orm, label: Кабинети, group: Факултети }
 
     App\Admin\AcademicTitleAdmin:
         arguments: [~, App\Entity\AcademicTitle, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: AcademicTitle, group: Lecturer }
+            - { name: sonata.admin, manager_type: orm, label: Академични Титли, group: Лектори }
 
     App\Admin\ScientificTitleAdmin:
         arguments: [~, App\Entity\ScientificTitle, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: ScientificTitle, group: Lecturer }
+            - { name: sonata.admin, manager_type: orm, label: Научни Титли, group: Лектори }
 
     App\Admin\GroupsAdmin:
         arguments: [~, App\Entity\Groups, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Groups, group: Groups }
+            - { name: sonata.admin, manager_type: orm, label: Групи, group: Групи }
 
     App\Admin\SubGroupsAdmin:
         arguments: [~, App\Entity\SubGroups, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: SubGroups, group: Groups }
+            - { name: sonata.admin, manager_type: orm, label: Под-групи, group: Групи }
 
     App\Admin\LeadingExerciseAdmin:
         arguments: [~, App\Entity\LeadingExercise, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: LeadingExercise, group: Lecturer }
+            - { name: sonata.admin, manager_type: orm, label: Водещи Занятия, group: Лектори }
 
     App\Admin\ExerciseAdmin:
         arguments: [~, App\Entity\Exercise, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Exercise, group: Lecturer }
+            - { name: sonata.admin, manager_type: orm, label: Занятия, group: Лектори }
