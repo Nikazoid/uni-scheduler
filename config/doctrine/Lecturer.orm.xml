@@ -11,7 +11,11 @@
         <field name="lastName"/>
         <field name="phone" nullable="true"/>
         <field name="email" unique="true"/>
-        <one-to-many field="leadingExercises" target-entity="LeadingExercise" mapped-by="lecturer"/>
+        <one-to-many field="leadingExercises" target-entity="LeadingExercise" mapped-by="lecturer">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
         <many-to-one field="academicTitle" target-entity="AcademicTitle"/>
         <many-to-many field="scientificTitle" target-entity="ScientificTitle">
             <cascade>

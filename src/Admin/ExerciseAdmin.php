@@ -6,8 +6,6 @@ use App\Entity\Exercise;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\Form\Type\DatePickerType;
-use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -26,15 +24,15 @@ class ExerciseAdmin extends AbstractAdmin
                     'label' => 'Стаи',
                     'btn_add' => false
                 ])
-                ->add('start', DateTimePickerType::class, [
+                ->add('start', null, [
                     'label' => 'Час на започване',
-                    'dp_view_mode'          => 'days',
-                    'dp_min_view_mode'      => 'days',
                 ])
-                ->add('end', DateTimePickerType::class, [
+                ->add('end', null, [
                     'label' => 'Час на започване',
-                    'dp_view_mode'          => 'days',
-                    'dp_min_view_mode'      => 'days',
+                ])
+                ->add('subGroups', ModelType::class, [
+                    'label' => 'Избери Група/Под-група',
+                    'btn_add' => false
                 ])
                 ->add('dayName', ChoiceType::class, [
                     'label' => 'Ден от седмицата',
@@ -62,6 +60,7 @@ class ExerciseAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->add('leadingExercise')
+            ->add('subGroups')
             ->add('rooms')
             ->add('start')
             ->add('end')
@@ -82,6 +81,7 @@ class ExerciseAdmin extends AbstractAdmin
         $showMapper
             ->with('Занятие')
                 ->add('leadingExercise')
+                ->add('subGroups')
                 ->add('rooms')
                 ->add('start')
                 ->add('end')
