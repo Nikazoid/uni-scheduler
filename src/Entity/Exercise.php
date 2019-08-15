@@ -30,12 +30,12 @@ class Exercise
     private $dayName;
 
     /**
-     * @var DateTime
+     * @var string
      */
     private $start;
 
     /**
-     * @var DateTime
+     * @var string
      */
     private $end;
 
@@ -62,6 +62,16 @@ class Exercise
     public function setRooms(Rooms $rooms): void
     {
         $this->rooms = $rooms;
+    }
+
+    public function getEnd(): ?string
+    {
+        return $this->end;
+    }
+
+    public function setEnd(string $end): void
+    {
+        $this->end = $end;
     }
 
     public function getSubGroups(): ?SubGroups
@@ -94,24 +104,14 @@ class Exercise
         $this->dayName = $dayName;
     }
 
-    public function getStart(): ?DateTime
+    public function getStart(): ?string
     {
         return $this->start;
     }
 
-    public function setStart(DateTime $start): void
+    public function setStart(string $start): void
     {
         $this->start = $start;
-    }
-
-    public function getEnd(): ?DateTime
-    {
-        return $this->end;
-    }
-
-    public function setEnd(DateTime $end): void
-    {
-        $this->end = $end;
     }
 
     public function getSemesterSplit(): ?string

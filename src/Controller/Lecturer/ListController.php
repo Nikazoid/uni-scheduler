@@ -10,7 +10,7 @@ class ListController extends AbstractController
 {
     private $lecturerRepository;
 
-        public function __construct(LecturerRepository $lecturerRepository)
+    public function __construct(LecturerRepository $lecturerRepository)
     {
         $this->lecturerRepository = $lecturerRepository;
     }

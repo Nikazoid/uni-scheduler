@@ -61,6 +61,13 @@ class SubGroups
 
     public function __toString()
     {
-        return $this->name;
+        $dateStart = $this->groups->getSpecialty()->getStartYear()->format('Y');
+        $dateEnd = $this->groups->getSpecialty()->getEndYear()->format('Y');
+
+        return
+            $this->groups->getSpecialty()->getAbbreviation() .
+            $dateStart . "/" .
+            $dateEnd . " " .
+            $this->groups->getName() . $this->name;
     }
 }

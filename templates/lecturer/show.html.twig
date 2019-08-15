@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ lecturer.firstName }} {{ lecturer.lastName }}{% endblock %}
+
+{% block body %}
+    <h3>{{ lecturer.firstName }} {{ lecturer.middleName }} {{ lecturer.lastName }}</h3>
+    <table>
+        <tr>
+            <tr>
+                <th>Monday</th>
+            </tr>
+            <td class="monday" style="background: lightblue; border: 1px solid;">
+                {% if lecturerMonday is empty %}
+                    <span>Няма занятия за този ден</span>
+                {% endif %}
+                {% for value in lecturerMonday %}
+                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
+                        {{ value.disciplineAbbreviation }}<br/>
+                        {{ value.specAbbriviation }}
+                        {{ value.specStartYear|date("Y") }}/
+                        {{ value.specEndYear|date("Y") }}
+                        {{ value.groupName }}{{ value.subGroupName }}<br/>
+                        {{ value.start }} - {{ value.end }}<br/>
+                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <tr>
+                <th>Tuesday</th>
+            </tr>
+            <td class="tuesday" style="background: lightgreen; border: 1px solid;">
+                {% if lecturerTuesday is empty %}
+                    <span>Няма занятия за този ден</span>
+                {% endif %}
+                {% for value in lecturerTuesday %}
+                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
+                        {{ value.disciplineAbbreviation }}<br/>
+                        {{ value.specAbbriviation }}
+                        {{ value.specStartYear|date("Y") }}/
+                        {{ value.specEndYear|date("Y") }}
+                        {{ value.groupName }}{{ value.subGroupName }}<br/>
+                        {{ value.start }} - {{ value.end }}<br/>
+                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <tr>
+                <th>Wednesday</th>
+            </tr>
+            <td class="monday" style="background: lightsalmon; border: 1px solid;">
+                {% if lecturerWednesday is empty %}
+                    <span>Няма занятия за този ден</span>
+                {% endif %}
+                {% for value in lecturerWednesday %}
+                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
+                        {{ value.disciplineAbbreviation }}<br/>
+                        {{ value.specAbbriviation }}
+                        {{ value.specStartYear|date("Y") }}/
+                        {{ value.specEndYear|date("Y") }}
+                        {{ value.groupName }}{{ value.subGroupName }}<br/>
+                        {{ value.start }} - {{ value.end }}<br/>
+                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <tr>
+                <th>Thursday</th>
+            </tr>
+            <td class="thursday" style="background: lightcoral; border: 1px solid;">
+                {% if lecturerThursday is empty %}
+                    <span>Няма занятия за този ден</span>
+                {% endif %}
+                {% for value in lecturerThursday %}
+                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
+                        {{ value.disciplineAbbreviation }}<br/>
+                        {{ value.specAbbriviation }}
+                        {{ value.specStartYear|date("Y") }}/
+                        {{ value.specEndYear|date("Y") }}
+                        {{ value.groupName }}{{ value.subGroupName }}<br/>
+                        {{ value.start }} - {{ value.end }}<br/>
+                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <tr>
+                <th>Friday</th>
+            </tr>
+            <td class="friday" style="background: lightseagreen; border: 1px solid;">
+                {% if lecturerFriday is empty %}
+                    <span>Няма занятия за този ден</span>
+                {% endif %}
+                {% for value in lecturerFriday %}
+                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
+                        {{ value.disciplineAbbreviation }}<br/>
+                        {{ value.specAbbriviation }}
+                        {{ value.specStartYear|date("Y") }}/
+                        {{ value.specEndYear|date("Y") }}
+                        {{ value.groupName }}{{ value.subGroupName }}<br/>
+                        {{ value.start }} - {{ value.end }}<br/>
+                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

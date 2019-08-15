@@ -7,7 +7,7 @@
     <div>
         {% for item in lecturer %}
             <div class="lecturer">
-                <a href="#">
+                <a href="{{ path('show_lecturer', {id: item.id}) }}">
                     <span>
                         {% for value in item.scientificTitle %}
                             {{ value.abbreviation }}
