@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app.user.username }}{% endblock %}
+
+{% block body %}
+    <h2>My Profile</h2>
+
+    <span>Име: {{ app.user.lecturer.firstName }} {{ app.user.lecturer.middleName }} {{ app.user.lecturer.lastName }}</span><br>
+    <span>Потребителско име: {{ app.user.username }}</span><br>
+    <span>Имейл: {{ app.user.email }}</span><br>
+    <span>Номер: {{ app.user.phone }}</span><br>
+    <span>Академична титла: {{ app.user.lecturer.academicTitle }}</span><br>
+    <span>Научни титли:
+        {% for value in app.user.lecturer.scientificTitle %}
+            {{ value.abbreviation }}
+        {% endfor %}
+    </span><br><br>
+    <span>Водещи Дисциплини: <br>
+        <div class="leading-discipline-block"></div>
+        {% for item in app.user.lecturer.leadingExercises %}
+            {{ item }} <br>
+        {% endfor %}
+        <br>
+    </span>
+
+    <a href="{{ path('show_lecturer', {id: app.user.lecturer.id}) }}">Покажи Графика</a>
+{% endblock %}

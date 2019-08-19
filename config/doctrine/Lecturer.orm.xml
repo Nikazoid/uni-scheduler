@@ -9,8 +9,6 @@
         <field name="firstName"/>
         <field name="middleName"/>
         <field name="lastName"/>
-        <field name="phone" nullable="true"/>
-        <field name="email" unique="true"/>
         <one-to-many field="leadingExercises" target-entity="LeadingExercise" mapped-by="lecturer">
             <cascade>
                 <cascade-persist/>

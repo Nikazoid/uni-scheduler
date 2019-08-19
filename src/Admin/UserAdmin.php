@@ -2,9 +2,11 @@
 
 namespace App\Admin;
 
+use App\Entity\User;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -22,7 +24,11 @@ class UserAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('lecturer', ModelType::class, [
+                'required' => false,
+                'label' => 'Преподавател',
+                'btn_add' => false,
+            ])
             ->add('username')
             ->add('email')
             ->add('password',PasswordType::class, [
@@ -31,8 +37,8 @@ class UserAdmin extends AbstractAdmin
             ->add('roles', ChoiceType::class, [
                 'multiple' => true,
                 'choices' => [
-                    'User' => 'ROLE_USER',
-                    'Admin' => 'ROLE_ADMIN',
+                    'Lecturer' => User::USER_ROLE_LECTURER,
+                    'Admin' => User::USER_ROLE_ADMIN,
                 ],
             ])
             ->end();
@@ -41,7 +47,7 @@ class UserAdmin extends AbstractAdmin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
+            ->addIdentifier('lecturer')
             ->add('roles','choice', [
                 'multiple' => true,
                 'choices' => []
@@ -61,6 +67,7 @@ class UserAdmin extends AbstractAdmin
         $showMapper
             ->with('User')
             ->add('email')
+            ->add('lecturer')
             ->add('username')
             ->add('phone')
             ->add('roles')
