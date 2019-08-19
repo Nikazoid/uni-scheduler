@@ -37,11 +37,6 @@ class Lecturer
     private $email;
 
     /**
-     * @var string
-     */
-    private $phone;
-
-    /**
      * @var LeadingExercise[]|ArrayCollection
      */
     private $leadingExercises;
@@ -117,11 +112,6 @@ class Lecturer
         $this->email = $email;
     }
 
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
     public function getLeadingExercises()
     {
         return $this->leadingExercises;
@@ -137,11 +127,6 @@ class Lecturer
     public function removeLeadingExercises(LeadingExercise $leadingExercises)
     {
         $this->leadingExercises->removeElement($leadingExercises);
-    }
-
-    public function setPhone(string $phone)
-    {
-        $this->phone = $phone;
     }
 
     public function getAcademicTitle()

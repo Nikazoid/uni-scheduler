@@ -7,8 +7,12 @@
             <generator strategy="AUTO" />
         </id>
         <field name="username" unique="true" />
-        <field name="name" />
         <field name="email" unique="true" />
+        <one-to-one field="lecturer" target-entity="Lecturer">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-one>
         <field name="password" />
         <field name="phone" nullable="true" />
         <field name="roles" type="array" />

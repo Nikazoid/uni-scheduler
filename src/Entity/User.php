@@ -6,6 +6,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface, \Serializable
 {
+    public const USER_ROLE_LECTURER = 'ROLE_LECTURER';
+    public const USER_ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @var int
      */
@@ -19,17 +22,17 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      */
-    private $name;
-
-    /**
-     * @var string
-     */
     private $email;
 
     /**
      * @var string|null
      */
     private $phone;
+
+    /**
+     * @var Lecturer|null
+     */
+    private $lecturer;
 
     /**
      * @var string|null
@@ -43,7 +46,7 @@ class User implements UserInterface, \Serializable
 
     public function __construct()
     {
-        $this->roles = ['ROLE_USER'];
+        $this->roles = ['ROLE_LECTURER'];
     }
 
     public function getId(): ?int
@@ -66,19 +69,19 @@ class User implements UserInterface, \Serializable
         return $this->email;
     }
 
+    public function getLecturer(): ?Lecturer
+    {
+        return $this->lecturer;
+    }
+
+    public function setLecturer(Lecturer $lecturer)
+    {
+        $this->lecturer = $lecturer;
+    }
+
     public function setEmail(string $email)
     {
         $this->email = $email;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
     }
 
     public function getPhone(): ?string

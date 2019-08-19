@@ -21,9 +21,6 @@ class LecturerAdmin extends AbstractAdmin
             ->add('firstName')
             ->add('middleName')
             ->add('lastName')
-            ->add('phone', TelType::class,[
-                'required' => false,
-            ])
             ->add('leadingExercises', CollectionType::class, [
                 'label' => 'Водещи занятия',
                 'btn_add' => 'добави',
@@ -37,7 +34,7 @@ class LecturerAdmin extends AbstractAdmin
                 'btn_add' => false
             ])
             ->add('scientificTitle', ModelType::class, [
-                'label' => 'Научни Титла',
+                'label' => 'Научни Титли',
                 'multiple' => true,
                 'btn_add' => false
             ])
@@ -49,7 +46,6 @@ class LecturerAdmin extends AbstractAdmin
                     'Civil' => Lecturer::LECTURER_CONTRACT_CIVIL
                 ],
             ])
-            ->add('email')
             ->add('estHours')
             ->end()
         ;
@@ -79,7 +75,6 @@ class LecturerAdmin extends AbstractAdmin
     {
         $showMapper
             ->with('Lecturer')
-                ->add('email')
                 ->add('scientificTitle')
                 ->add('academicTitle')
                 ->add('firstName')
@@ -88,7 +83,6 @@ class LecturerAdmin extends AbstractAdmin
                 ->add('lastName')
                 ->add('estHours')
                 ->add('contract')
-                ->add('phone')
             ->end()
         ;
     }

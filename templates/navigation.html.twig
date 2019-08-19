@@ -1,0 +1,15 @@
+{% block header %}
+<nav>
+    <ul>
+        <li><a href="{{ path('homepage') }}">Начало</a></li>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <li><a href="{{ path('show_user_profile') }}">Моят Профил</a></li>
+            <li><a href="{{ path('list_lecturer') }}">Лектори</a></li>
+            <li><a href="{{ path('logout') }}">Излез</a></li>
+        {% else %}
+            <li><a href="{{ path('login') }}">Влез</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
