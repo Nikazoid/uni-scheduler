@@ -1,0 +1,55 @@
+@import 'colors';
+@import 'fonts';
+@import 'variables';
+@import 'components/login-form';
+@import 'components/navigation';
+
+* {
+    box-sizing: border-box;
+    transition: .3s ease-in-out;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: url('../../public/images/background-pattern.png') repeat;
+    background-size: auto;
+    color: $color-scorpion;
+    font-family: $font-family-sans-serif;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-black;
+}
+
+a {
+    color: $color-tundora;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+
+    li {
+        &.current {
+            a {
+                color: $color-hokey-pokey;
+            }
+        }
+    }
+}
+

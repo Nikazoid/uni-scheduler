@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.0",
+    "autoprefixer": "^9.5.1",
+    "node-sass": "^4.9.4",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "stylelint": "^8.3.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-order": "1.0.0",
+    "stylelint-scss": "^3.3.2",
+    "webpack-notifier": "^1.6.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
