@@ -22,6 +22,7 @@ class LecturerRepository extends EntityRepository
                 e.start,
                 g.name AS groupName,
                 e.end,
+                le.exerciseType,
                 sg.name AS subGroupName,
                 r.roomNumber,
                 f.abbreviation AS facultyAbbreviation,

@@ -3,112 +3,67 @@
 {% block title %}{{ lecturer.firstName }} {{ lecturer.lastName }}{% endblock %}
 
 {% block body %}
-    <h3>{{ lecturer.firstName }} {{ lecturer.middleName }} {{ lecturer.lastName }}</h3>
-    <table>
-        <tr>
-            <tr>
-                <th>Monday</th>
-            </tr>
-            <td class="monday" style="background: lightblue; border: 1px solid;">
-                {% if lecturerMonday is empty %}
-                    <span>Няма занятия за този ден</span>
-                {% endif %}
-                {% for value in lecturerMonday %}
-                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
-                        {{ value.disciplineAbbreviation }}<br/>
-                        {{ value.specAbbriviation }}
-                        {{ value.specStartYear|date("Y") }}/
-                        {{ value.specEndYear|date("Y") }}
-                        {{ value.groupName }}{{ value.subGroupName }}<br/>
-                        {{ value.start }} - {{ value.end }}<br/>
-                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
-                    </div>
-                {% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <tr>
-                <th>Tuesday</th>
-            </tr>
-            <td class="tuesday" style="background: lightgreen; border: 1px solid;">
-                {% if lecturerTuesday is empty %}
-                    <span>Няма занятия за този ден</span>
-                {% endif %}
-                {% for value in lecturerTuesday %}
-                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
-                        {{ value.disciplineAbbreviation }}<br/>
-                        {{ value.specAbbriviation }}
-                        {{ value.specStartYear|date("Y") }}/
-                        {{ value.specEndYear|date("Y") }}
-                        {{ value.groupName }}{{ value.subGroupName }}<br/>
-                        {{ value.start }} - {{ value.end }}<br/>
-                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
-                    </div>
-                {% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <tr>
-                <th>Wednesday</th>
-            </tr>
-            <td class="monday" style="background: lightsalmon; border: 1px solid;">
-                {% if lecturerWednesday is empty %}
-                    <span>Няма занятия за този ден</span>
-                {% endif %}
-                {% for value in lecturerWednesday %}
-                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
-                        {{ value.disciplineAbbreviation }}<br/>
-                        {{ value.specAbbriviation }}
-                        {{ value.specStartYear|date("Y") }}/
-                        {{ value.specEndYear|date("Y") }}
-                        {{ value.groupName }}{{ value.subGroupName }}<br/>
-                        {{ value.start }} - {{ value.end }}<br/>
-                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
-                    </div>
-                {% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <tr>
-                <th>Thursday</th>
-            </tr>
-            <td class="thursday" style="background: lightcoral; border: 1px solid;">
-                {% if lecturerThursday is empty %}
-                    <span>Няма занятия за този ден</span>
-                {% endif %}
-                {% for value in lecturerThursday %}
-                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
-                        {{ value.disciplineAbbreviation }}<br/>
-                        {{ value.specAbbriviation }}
-                        {{ value.specStartYear|date("Y") }}/
-                        {{ value.specEndYear|date("Y") }}
-                        {{ value.groupName }}{{ value.subGroupName }}<br/>
-                        {{ value.start }} - {{ value.end }}<br/>
-                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
-                    </div>
-                {% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <tr>
-                <th>Friday</th>
-            </tr>
-            <td class="friday" style="background: lightseagreen; border: 1px solid;">
-                {% if lecturerFriday is empty %}
-                    <span>Няма занятия за този ден</span>
-                {% endif %}
-                {% for value in lecturerFriday %}
-                    <div class="block" style="padding: 15px; border: 1px solid; text-align: center;">
-                        {{ value.disciplineAbbreviation }}<br/>
-                        {{ value.specAbbriviation }}
-                        {{ value.specStartYear|date("Y") }}/
-                        {{ value.specEndYear|date("Y") }}
-                        {{ value.groupName }}{{ value.subGroupName }}<br/>
-                        {{ value.start }} - {{ value.end }}<br/>
-                        {{ value.roomNumber }} {{ value.facultyAbbreviation }} <br/>
-                    </div>
-                {% endfor %}
-            </td>
-        </tr>
-    </table>
+    <div class="schedule-container">
+        <div class="schedule-inner-container">
+            <div class="schedule-header">
+                <div class="profile-picture">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                         data-icon="user" class="svg-inline--fa fa-user fa-w-14"
+                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                        d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128
+                        128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0
+                        422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
+                        </path>
+                    </svg>
+                </div>
+                <h3>
+                    {{ lecturer.academicTitle.abbreviation }}
+                    {{ lecturer.firstName }} {{ lecturer.middleName }} {{ lecturer.lastName }}
+                </h3>
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item first-item">
+                    <a class="nav-link active" data-toggle="tab" href="#information-menu">Информация за преподавателя</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#monday-menu">Понеделник</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tuesday-menu">Вторник</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#wednesday-menu">Сряда</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#thursday-menu">Четвъртък</a>
+                </li>
+                <li class="nav-item friday-item">
+                    <a class="nav-link" data-toggle="tab" href="#friday-menu">Петък</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="monday-menu" class="container tab-pane fade">
+                    {% include './lecturer/days/monday.html.twig' %}
+                </div>
+                <div id="tuesday-menu" class="container tab-pane fade">
+                    {% include './lecturer/days/tuesday.html.twig' %}
+                </div>
+                <div id="wednesday-menu" class="container tab-pane fade">
+                    {% include './lecturer/days/wednesday.html.twig' %}
+                </div>
+                <div id="thursday-menu" class="container tab-pane fade">
+                    {% include './lecturer/days/thursday.html.twig' %}
+                </div>
+                <div id="friday-menu" class="container tab-pane fade">
+                    {% include './lecturer/days/friday.html.twig' %}
+                </div>
+                <div id="information-menu" class="container tab-pane active">
+                    {% include './lecturer/days/information.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

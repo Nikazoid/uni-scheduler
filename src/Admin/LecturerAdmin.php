@@ -38,6 +38,9 @@ class LecturerAdmin extends AbstractAdmin
                 'multiple' => true,
                 'btn_add' => false
             ])
+            ->add('room', null, [
+                'label' => 'Стая на преподавателя'
+            ])
             ->add('contract', ChoiceType::class, [
                 'required' => false,
                 'choices' => [
@@ -61,6 +64,7 @@ class LecturerAdmin extends AbstractAdmin
             ->add('academicTitle')
             ->add('scientificTitle')
             ->add('leadingExercises')
+            ->add('lastName')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],

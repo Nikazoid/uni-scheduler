@@ -1,0 +1,15 @@
+{% if lecturerTuesday is empty %}
+    <span>Няма занятия за този ден</span>
+{% endif %}
+{% for value in lecturerTuesday %}
+    <div class="block">
+        {{ value.start }} - {{ value.end }}
+        <hr>
+        <b>{{ value.exerciseType }}</b> {{ value.disciplineAbbreviation }}<br/>
+        {{ value.specAbbriviation }}
+        {{ value.specStartYear|date("Y") }}/
+        {{ value.specEndYear|date("Y") }}
+        {{ value.groupName }}{{ value.subGroupName }}<br/>
+        {{ value.roomNumber }} {{ value.facultyAbbreviation }}
+    </div>
+{% endfor %}
