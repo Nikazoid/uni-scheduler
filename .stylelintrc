@@ -66,7 +66,6 @@
     "scss/at-extend-no-missing-placeholder": true,
     "scss/double-slash-comment-whitespace-inside": "always",
     "scss/selector-no-redundant-nesting-selector": true,
-    "selector-id-pattern": ["^$", {"message": "Do not use id selectors"}],
     "selector-max-compound-selectors": 3,
     "shorthand-property-no-redundant-values": true,
     "string-quotes": "single",

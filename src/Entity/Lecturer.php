@@ -37,6 +37,11 @@ class Lecturer
     private $email;
 
     /**
+     * @var string
+     */
+    private $room;
+
+    /**
      * @var LeadingExercise[]|ArrayCollection
      */
     private $leadingExercises;
@@ -57,6 +62,11 @@ class Lecturer
     private $contract;
 
     /**
+     * @var User|null
+     */
+    private $user;
+
+    /**
      * @var int|null
      */
     private $estHours;
@@ -70,6 +80,26 @@ class Lecturer
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getRoom(): ?string
+    {
+        return $this->room;
+    }
+
+    public function setRoom(string $room): void
+    {
+        $this->room = $room;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): void
+    {
+        $this->user = $user;
     }
 
     public function getFirstName(): ?string

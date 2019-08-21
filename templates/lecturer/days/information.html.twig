@@ -1,0 +1,12 @@
+<div class="inner-lecturer-information">
+    <p><b>Име:</b> {{ lecturer.firstName }} {{ lecturer.middleName }} {{ lecturer.lastName }} </p>
+    <p><b>Академична Титла:</b> {{ lecturer.academicTitle }}</p>
+    <p><b>Научни Титли:</b>
+        {% for title in lecturer.scientificTitle %}
+            {{ title.name }}
+        {% endfor %}
+    </p>
+    <p><b>Телефон за Връзка:</b> {{ lecturer.user.phone }}</p>
+    <p><b>Имейл:</b> {{ lecturer.user.email }}</p>
+    <p><b>Кабинет:</b> {{ lecturer.room }}</p>
+</div>

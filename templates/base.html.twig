@@ -13,8 +13,11 @@
         {% block header %}
             {% include 'navigation.html.twig' %}
         {% endblock %}
-        {% block body %}
-        {% endblock %}
+
+        <div class="main">
+            {% block body %}{% endblock %}
+        </div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
