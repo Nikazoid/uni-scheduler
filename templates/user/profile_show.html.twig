@@ -3,25 +3,76 @@
 {% block title %}{{ app.user.username }}{% endblock %}
 
 {% block body %}
-    <h2>My Profile</h2>
+    <div class="schedule-container">
+        <div class="schedule-inner-container">
+            <div class="schedule-header">
+                <div class="profile-picture">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                         data-icon="user" class="svg-inline--fa fa-user fa-w-14"
+                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                              d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128
+                        128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0
+                        422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
+                        </path>
+                    </svg>
+                </div>
+                <h3>
+                    {{ app.user.lecturer.academicTitle.abbreviation }}
+                    {{ app.user.lecturer.firstName }} {{ app.user.lecturer.middleName }} {{ app.user.lecturer.lastName }}
+                </h3>
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item first-item">
+                    <a class="nav-link active" data-toggle="tab" href="#information-menu">Информация за преподавателя</a>
+                </li>
+                <li class="nav-item first-item">
+                    <a class="nav-link" data-toggle="tab" href="#leading-exercises-menu">Водещи Дисциплини</a>
+                </li>
+            </ul>
 
-    <span>Име: {{ app.user.lecturer.firstName }} {{ app.user.lecturer.middleName }} {{ app.user.lecturer.lastName }}</span><br>
-    <span>Потребителско име: {{ app.user.username }}</span><br>
-    <span>Имейл: {{ app.user.email }}</span><br>
-    <span>Номер: {{ app.user.phone }}</span><br>
-    <span>Академична титла: {{ app.user.lecturer.academicTitle }}</span><br>
-    <span>Научни титли:
-        {% for value in app.user.lecturer.scientificTitle %}
-            {{ value.abbreviation }}
-        {% endfor %}
-    </span><br><br>
-    <span>Водещи Дисциплини: <br>
-        <div class="leading-discipline-block"></div>
-        {% for item in app.user.lecturer.leadingExercises %}
-            {{ item }} <br>
-        {% endfor %}
-        <br>
-    </span>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="information-menu" class="container tab-pane active">
+                    <div class="inner-lecturer-information">
+                        <p><b>Име:</b>
+                            {{ app.user.lecturer.firstName }}
+                            {{ app.user.lecturer.middleName }}
+                            {{ app.user.lecturer.lastName }}
+                        </p>
+                        <p><b>Потребителско име:</b> {{ app.user.username }} </p>
+                        <p><b>Академична Титла:</b> {{ app.user.lecturer.academicTitle }}</p>
+                        <p><b>Научни Титли:</b>
+                            {% for value in app.user.lecturer.scientificTitle %}
+                                {{ value.abbreviation }}
+                            {% endfor %}
+                        </p>
+                        {% if app.user.lecturer.user is not empty %}
+                            <p><b>Телефон за Връзка:</b> {{ app.user.phone }}</p>
+                            <p><b>Имейл:</b> {{ app.user.email }}</p>
+                            <p><b>Кабинет:</b> {{ app.user.lecturer.room }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="leading-exercises-menu" class="container tab-pane fade">
+                    <div class="inner-le">
+                        {% for item in app.user.lecturer.leadingExercises %}
+                            <p>
+                                <span><b>Специалност:</b> {{ item.specialty.abbreviation }}</span><br>
+                                <span><b>Поток:</b> {{ item.specialty.startYear|date('Y') }}/{{ item.specialty.endYear|date('Y') }}</span><br>
+                                <span><b>Дисциплина:</b> {{ item.discipline.abbreviation }}</span><br>
+                                <span><b>Група:</b>
+                                    {% for value in item.exercise %}
+                                        {{ value.subGroups.groups.name }}{{ value.subGroups.name }}
+                                    {% endfor %}
+                                </span><br>
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <a href="{{ path('show_lecturer', {id: app.user.lecturer.id}) }}">Покажи Графика</a>
 {% endblock %}
