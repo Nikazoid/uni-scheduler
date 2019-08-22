@@ -1,0 +1,23 @@
+.hero-image {
+    align-items: center;
+    background: url('../../public/images/landing-page.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: center;
+
+    .hero-image-content {
+        text-align: center;
+    }
+    p {
+        color: #ececec;
+    }
+    h1 {
+        color: #ececec;
+        font-size: 40px;
+        font-weight: 700;
+        padding: 15px;
+        text-shadow: 4px 2px 0 #343a40;
+    }
+}
