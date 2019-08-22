@@ -2,6 +2,49 @@
 
 {% block title %}Homepage{% endblock %}
 {% block body %}
-    <h1>Welcome to Uni-scheduler</h1>
-    <p>This will be the Homepage</p>
+    <div class="hero-image">
+        <div class="hero-image-content">
+            <h1>Uni-scheduler</h1>
+            <p>Тази уеб система е предназначена само и единствено за оторизирани лице от Технически Университет Варна </p>
+        </div>
+    </div>
+    <section class="homepage-services">
+        <div class="student-service">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <p>Преподаватели</p>
+        </div>
+        <div class="lecturer-service">
+            <i class="fas fa-graduation-cap"></i>
+            <p>Студенти</p>
+        </div>
+        <div class="information-service">
+            <i class="fas fa-university"></i>
+            <p>За Университета</p>
+        </div>
+    </section>
+    <section class="homepage-information">
+        <div class="information-container">
+            <h3>Важно!</h3>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                essentially unchanged. It was popularised in
+            </p>
+        </div>
+    </section>
+    <section class="homepage-statistics">
+        <div class="student-statistic">
+            <h3>Брой Студенти</h3>
+            <span>1500</span>
+        </div>
+        <div class="lecturer-statistic">
+            <h3>Брой Преподаватели</h3>
+            <span>25</span>
+        </div>
+    </section>
+    <footer>
+        <div class="footer"></div>
+    </footer>
 {% endblock %}

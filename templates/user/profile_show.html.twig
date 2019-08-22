@@ -52,6 +52,7 @@
                             <p><b>Имейл:</b> {{ app.user.email }}</p>
                             <p><b>Кабинет:</b> {{ app.user.lecturer.room }}</p>
                         {% endif %}
+                        <p style="text-align: right;"><a href="{{ path('show_lecturer', {id: app.user.lecturer.id}) }}">Покажи Графика</a></p>
                     </div>
                 </div>
                 <div id="leading-exercises-menu" class="container tab-pane fade">
@@ -74,5 +75,5 @@
         </div>
     </div>
 
-    <a href="{{ path('show_lecturer', {id: app.user.lecturer.id}) }}">Покажи Графика</a>
+
 {% endblock %}
