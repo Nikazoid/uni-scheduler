@@ -6,7 +6,9 @@
             {{ title.name }}
         {% endfor %}
     </p>
-    <p><b>Телефон за Връзка:</b> {{ lecturer.user.phone }}</p>
-    <p><b>Имейл:</b> {{ lecturer.user.email }}</p>
-    <p><b>Кабинет:</b> {{ lecturer.room }}</p>
+    {% if lecturer.user is not empty %}
+        <p><b>Телефон за Връзка:</b> {{ lecturer.user.phone }}</p>
+        <p><b>Имейл:</b> {{ lecturer.user.email }}</p>
+        <p><b>Кабинет:</b> {{ lecturer.room }}</p>
+    {% endif %}
 </div>
