@@ -1,0 +1,16 @@
+{% extends '@SonataAdmin/CRUD/list.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css">
+        td.sonata-ba-list-field.sonata-ba-list-field-orm_one_to_many {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+    <!-- and/or -->
+
+{#    <link rel="stylesheet" href="{{ asset('css/components/admin/lecturer') }}"/>#}
+{% endblock %}

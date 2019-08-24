@@ -3,6 +3,18 @@ services:
         arguments: [~, App\Entity\Lecturer, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Лектори, group: Лектори }
+        calls:
+            - [setTemplate, ['list', 'list.html.twig']]
+
+    App\Admin\LeadingExerciseAdmin:
+        arguments: [~, App\Entity\LeadingExercise, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Водещи Занятия, group: Занятия }
+
+    App\Admin\ExerciseAdmin:
+        arguments: [~, App\Entity\Exercise, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Занятия, group: Занятия }
 
     App\Admin\UserAdmin:
         arguments: [~, App\Entity\User, ~]
@@ -51,13 +63,3 @@ services:
         arguments: [~, App\Entity\SubGroups, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Под-групи, group: Групи }
-
-    App\Admin\LeadingExerciseAdmin:
-        arguments: [~, App\Entity\LeadingExercise, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Водещи Занятия, group: Лектори }
-
-    App\Admin\ExerciseAdmin:
-        arguments: [~, App\Entity\Exercise, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Занятия, group: Лектори }
