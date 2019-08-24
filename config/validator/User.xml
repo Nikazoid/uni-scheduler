@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="App\Entity\User">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">username</option>
+            <option name="message">Потребителското име е заето</option>
+        </constraint>
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">email</option>
+            <option name="message">Имейлът е зает</option>
+        </constraint>
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">lecturer</option>
+            <option name="message">Този Преподавател има акаунт</option>
+        </constraint>
+        <property name="username">
+            <constraint name="Length">
+                <option name="min">5</option>
+                <option name="max">60</option>
+                <option name="minMessage">Потребителското име трябва да е дълго поне 5 символа</option>
+                <option name="maxMessage">Потребителското име не трябва да надвишава 60 символа</option>
+            </constraint>
+        </property>
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">register.email.required</option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">register.email.valid</option>
+                <option name="checkMX">true</option>
+            </constraint>
+        </property>
+        <property name="roles">
+            <constraint name="NotBlank">
+                <option name="message">Моля избере роля</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

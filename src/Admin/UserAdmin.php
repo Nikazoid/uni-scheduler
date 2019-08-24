@@ -29,12 +29,18 @@ class UserAdmin extends AbstractAdmin
                 'label' => 'Преподавател',
                 'btn_add' => false,
             ])
-            ->add('username')
-            ->add('email')
+            ->add('username', null, [
+                'label' => 'Потребителско име',
+            ])
+            ->add('email', null, [
+                'label' => 'Имейл',
+            ])
             ->add('password',PasswordType::class, [
+                'label' => 'Парола',
                 'required' => false,
             ])
             ->add('roles', ChoiceType::class, [
+                'label' => 'Правомощия',
                 'multiple' => true,
                 'choices' => [
                     'Lecturer' => User::USER_ROLE_LECTURER,
@@ -48,6 +54,8 @@ class UserAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('lecturer')
+            ->add('username')
+            ->add('email')
             ->add('roles','choice', [
                 'multiple' => true,
                 'choices' => []
