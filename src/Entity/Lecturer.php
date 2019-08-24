@@ -57,7 +57,7 @@ class Lecturer
     private $scientificTitle;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $contract;
 
@@ -184,7 +184,7 @@ class Lecturer
         return $this->contract;
     }
 
-    public function setContract(?string $contract)
+    public function setContract(string $contract)
     {
         $this->contract = $contract;
     }
