@@ -5,8 +5,6 @@ namespace App\Admin;
 use App\Entity\Discipline;
 use App\Entity\LeadingExercise;
 use App\Entity\Specialty;
-use App\Repository\LecturerRepository;
-use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
