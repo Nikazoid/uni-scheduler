@@ -6,30 +6,38 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\Form\Type\DatePickerType;
+use Sonata\Form\Validator\ErrorElement;
 
 class SpecialtyAdmin extends AbstractAdmin
 {
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $getCurrentStartYear=$object->getStartYear();
+
+        if ($getCurrentStartYear<date("Y")){
+            $errorElement
+                ->with('startYear')
+                ->addViolation('Моля въведете година поляма от '. date("Y"))
+                ->end();
+        }
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Oписание')
-            ->add('name', null, [
-                'label' => 'Име на Дисциплината'
-            ])
-            ->add('abbreviation', null, [
-                'label' => 'Съкращение'
-            ])
-            ->add('startYear', DatePickerType::class, [
-                'label' => 'Година на Започване',
-                'dp_view_mode'          => 'months',
-                'dp_min_view_mode'      => 'months',
-            ])
-            ->add('endYear', DatePickerType::class, [
-                'label' => 'Година на Завършване',
-                'dp_view_mode'          => 'months',
-                'dp_min_view_mode'      => 'months',
-            ])
+            ->with('Имена', ['class' => 'col-md-6'])
+                ->add('name', null, [
+                    'label' => 'Име на Специалност'
+                ])
+                ->add('abbreviation', null, [
+                    'label' => 'Съкращение'
+                ])
+                ->end()
+                ->with('Поток', ['class' => 'col-md-6'])
+                    ->add('startYear', null, [
+                        'label' => 'Година на Започване',
+                    ])
+                ->end()
             ->end()
         ;
     }
@@ -62,5 +70,15 @@ class SpecialtyAdmin extends AbstractAdmin
             ->add('endYear')
             ->end()
         ;
+    }
+
+    public function prePersist($object)
+    {
+        $object->setEndYear($object->getStartYear()+4);
+    }
+
+    public function preUpdate($object)
+    {
+        $object->setEndYear($object->getStartYear()+4);
     }
 }

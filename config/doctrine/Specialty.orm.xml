@@ -8,7 +8,7 @@
         </id>
         <field name="name"/>
         <field name="abbreviation"/>
-        <field name="startYear" type="date"/>
-        <field name="endYear" type="date"/>
+        <field name="startYear" type="integer" unique="true"/>
+        <field name="endYear" type="integer"/>
     </entity>
 </doctrine-mapping>

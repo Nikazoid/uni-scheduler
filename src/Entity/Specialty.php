@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use DateTime;
-
 class Specialty
 {
     /**
@@ -22,16 +20,16 @@ class Specialty
     private $abbreviation;
 
     /**
-     * @var DateTime
+     * @var int
      */
     private $startYear;
 
     /**
-     * @var DateTime
+     * @var int
      */
     private $endYear;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -61,30 +59,28 @@ class Specialty
         $this->abbreviation = $abbreviation;
     }
 
-    public function getStartYear(): ?DateTime
+    public function getStartYear(): ?int
     {
         return $this->startYear;
     }
 
-    public function setStartYear(DateTime $startYear): void
+    public function setStartYear(int $startYear): void
     {
         $this->startYear = $startYear;
     }
 
-    public function getEndYear(): ?DateTime
+    public function getEndYear(): ?int
     {
         return $this->endYear;
     }
 
-    public function setEndYear(DateTime $endYear): void
+    public function setEndYear(int $endYear): void
     {
         $this->endYear = $endYear;
     }
 
     public function __toString()
     {
-        $dateStart = $this->startYear->format('Y');
-        $dateEnd = $this->endYear->format('Y');
-        return $this->name . " " . $dateStart . "/" . $dateEnd;
+        return $this->name . " " . $this->startYear . "/" . $this->endYear;
     }
 }

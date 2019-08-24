@@ -105,8 +105,8 @@ class LeadingExercise
 
     public function __toString()
     {
-        $dateStart = $this->specialty->getStartYear()->format('Y');
-        $dateEnd = $this->specialty->getEndYear()->format('Y');
+        $dateStart = $this->specialty->getStartYear();
+        $dateEnd = $this->specialty->getEndYear();
 
         return
             $this->specialty->getAbbreviation() . " " .
