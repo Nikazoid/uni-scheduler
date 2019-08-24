@@ -6,8 +6,8 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
-        <field name="name"/>
-        <field name="abbreviation"/>
+        <field name="name" unique="true"/>
+        <field name="abbreviation" unique="true"/>
         <field name="lecturesCount"/>
         <field name="semExercisesCount"/>
         <field name="labExercisesCount"/>
