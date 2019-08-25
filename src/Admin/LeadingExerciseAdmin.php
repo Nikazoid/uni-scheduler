@@ -29,7 +29,7 @@ class LeadingExerciseAdmin extends AbstractAdmin
                 WHERE 
                     lecturer_id = $lecturerID 
                 AND discipline_id = $disciplineID 
-                AND exercise_type = '" . "$exerciseType" . "'";
+                AND exercise_type = '" . "$exerciseType" . "'" . " LIMIT 1";
 
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
@@ -47,7 +47,7 @@ class LeadingExerciseAdmin extends AbstractAdmin
         {
             $sql1 = "SELECT *
                 FROM leading_exercise
-                WHERE discipline_id = $disciplineID AND exercise_type = '" . "лекция" . "'";
+                WHERE discipline_id = $disciplineID AND exercise_type = '" . "лекция" . "'" . " LIMIT 1";
 
             $stmt = $em->getConnection()->prepare($sql1);
             $stmt->execute();
