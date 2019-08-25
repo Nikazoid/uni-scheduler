@@ -38,19 +38,19 @@ class ExerciseAdmin extends AbstractAdmin
                 ->end();
         }
 
-        $sql3 = "SELECT 1
+        $sql3 = "SELECT *
                 FROM leading_exercise
                 WHERE
                     id = $getCurrentLeadingExercise 
-                    AND exercise_type = 'лекция'";
+                    AND exercise_type = 'лекция' 
+                LIMIT 1";
 
         $stmt = $em->getConnection()->prepare($sql3);
         $stmt->execute();
 
         $result3 = $stmt->fetchAll();
-        dump($result3);
 
-        if ($result3 > 0) {
+        if (count($result3) > 0) {
             $errorElement
                 ->with('leadingExercise')
                     ->addViolation('Toзи преподавател вече преподава лекция по тази дисциплина')
@@ -62,7 +62,7 @@ class ExerciseAdmin extends AbstractAdmin
                 WHERE
                     leading_exercise_id = $getCurrentLeadingExercise 
                     AND `start` = ". "'" . "$getCurrentStart" . "'" .
-                    "AND day_name = " . "'"."$getCurrentDayName" . "'" ;
+                    "AND day_name = " . "'"."$getCurrentDayName" . "'" . " LIMIT 1";
 
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
