@@ -12,6 +12,7 @@
                 <value>dayName</value>
                 <value>end</value>
                 <value>rooms</value>
+                <value>subGroups</value>
             </option>
             <option name="message">Занятието вече е поето</option>
         </constraint>

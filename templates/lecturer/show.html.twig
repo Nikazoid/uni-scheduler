@@ -26,6 +26,9 @@
                 <li class="nav-item first-item">
                     <a class="nav-link active" data-toggle="tab" href="#information-menu">Информация за преподавателя</a>
                 </li>
+                <li class="nav-item first-item">
+                    <a class="nav-link" data-toggle="tab" href="#all-days">Виж Графика за цялата седмица</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#monday-menu">Понеделник</a>
                 </li>
@@ -62,6 +65,9 @@
                 </div>
                 <div id="information-menu" class="container tab-pane active">
                     {% include './lecturer/days/information.html.twig' %}
+                </div>
+                <div id="all-days" class="container tab-pane">
+                    {% include './lecturer/days/all-days.html.twig' %}
                 </div>
             </div>
         </div>
