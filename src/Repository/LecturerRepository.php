@@ -13,6 +13,15 @@ class LecturerRepository extends EntityRepository
         parent::__construct($em, $em->getClassMetadata(Lecturer::class));
     }
 
+    public function getNumberOfLecturers(){
+        return $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('l.id')
+            ->from('App:Lecturer', 'l')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getExercisesByDay($day, $lecturerId): array
     {
         return $this->getEntityManager()

@@ -18,8 +18,10 @@
                     </svg>
                 </div>
                 <h3>
-                    {{ app.user.lecturer.academicTitle.abbreviation }}
-                    {{ app.user.lecturer.firstName }} {{ app.user.lecturer.middleName }} {{ app.user.lecturer.lastName }}
+                    {% if app.user.lecturer is not empty %}
+                        {{ app.user.lecturer.academicTitle.abbreviation }}
+                        {{ app.user.lecturer.firstName }} {{ app.user.lecturer.middleName }} {{ app.user.lecturer.lastName }}
+                    {% endif %}
                 </h3>
             </div>
             <ul class="nav nav-tabs" role="tablist">
@@ -35,40 +37,45 @@
             <div class="tab-content">
                 <div id="information-menu" class="container tab-pane active">
                     <div class="inner-lecturer-information">
-                        <p><b>Име:</b>
-                            {{ app.user.lecturer.firstName }}
-                            {{ app.user.lecturer.middleName }}
-                            {{ app.user.lecturer.lastName }}
-                        </p>
                         <p><b>Потребителско име:</b> {{ app.user.username }} </p>
-                        <p><b>Академична Титла:</b> {{ app.user.lecturer.academicTitle }}</p>
-                        <p><b>Научни Титли:</b>
-                            {% for value in app.user.lecturer.scientificTitle %}
-                                {{ value.abbreviation }}
-                            {% endfor %}
-                        </p>
-                        {% if app.user.lecturer.user is not empty %}
-                            <p><b>Телефон за Връзка:</b> {{ app.user.phone }}</p>
-                            <p><b>Имейл:</b> {{ app.user.email }}</p>
-                            <p><b>Кабинет:</b> {{ app.user.lecturer.room }}</p>
+                        <p><b>Телефон за Връзка:</b> {{ app.user.phone }}</p>
+                        <p><b>Имейл:</b> {{ app.user.email }}</p>
+                        {% if app.user.lecturer is not empty %}
+                            <p><b>Име:</b>
+                                {{ app.user.lecturer.firstName }}
+                                {{ app.user.lecturer.middleName }}
+                                {{ app.user.lecturer.lastName }}
+                            </p>
+                            <p><b>Научни Титли:</b>
+                                {% for value in app.user.lecturer.scientificTitle %}
+                                    {{ value.abbreviation }}
+                                {% endfor %}
+                            </p>
+                            <p><b>Академична Титла:</b> {{ app.user.lecturer.academicTitle }}</p>
+                            {% if app.user.lecturer.user is not empty %}
+                                <p><b>Кабинет:</b> {{ app.user.lecturer.room }}</p>
+                            {% endif %}
+
+                            <p style="text-align: right;"><a href="{{ path('show_lecturer', {id: app.user.lecturer.id}) }}">Покажи Графика</a></p>
                         {% endif %}
-                        <p style="text-align: right;"><a href="{{ path('show_lecturer', {id: app.user.lecturer.id}) }}">Покажи Графика</a></p>
                     </div>
                 </div>
                 <div id="leading-exercises-menu" class="container tab-pane fade">
                     <div class="inner-le">
-                        {% for item in app.user.lecturer.leadingExercises %}
-                            <p>
-                                <span><b>Специалност:</b> {{ item.specialty.abbreviation }}</span><br>
-                                <span><b>Поток:</b> {{ item.specialty.startYear|date('Y') }}/{{ item.specialty.endYear|date('Y') }}</span><br>
-                                <span><b>Дисциплина:</b> {{ item.discipline.abbreviation }}</span><br>
-                                <span><b>Група:</b>
-                                    {% for value in item.exercise %}
-                                        {{ value.subGroups.groups.name }}{{ value.subGroups.name }}
-                                    {% endfor %}
-                                </span><br>
-                            </p>
-                        {% endfor %}
+                        {% if app.user.lecturer is not empty %}
+                            {% for item in app.user.lecturer.leadingExercises %}
+                                <p>
+                                    <span><b>Специалност:</b> {{ item.specialty.abbreviation }}</span><br>
+                                    <span><b>Поток:</b> {{ item.specialty.startYear|date('Y') }}/{{ item.specialty.endYear|date('Y') }}</span><br>
+                                    <span><b>Дисциплина:</b> {{ item.discipline.abbreviation }}</span><br>
+                                    <span><b>Група:</b>
+                                        {% for value in item.exercise %}
+                                            {{ value.subGroups.groups.name }}{{ value.subGroups.name }}
+                                        {% endfor %}
+                                    </span><br>
+                                </p>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

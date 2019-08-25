@@ -75,6 +75,6 @@ class Rooms
     }
 
     public function __toString() {
-        return 'Room '. $this->roomNumber;
+        return 'Room '. $this->roomNumber . ' ' . $this->faculty->getAbbreviation();
     }
 }
