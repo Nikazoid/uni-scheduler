@@ -49,7 +49,7 @@ class Exercise
      */
     private $semesterSplit;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -104,14 +104,14 @@ class Exercise
         $this->dayName = $dayName;
     }
 
-    public function getStart(): ?string
-    {
-        return $this->start;
-    }
-
     public function setStart(string $start): void
     {
         $this->start = $start;
+    }
+
+    public function getStart(): ?string
+    {
+        return $this->start;
     }
 
     public function getSemesterSplit(): ?string

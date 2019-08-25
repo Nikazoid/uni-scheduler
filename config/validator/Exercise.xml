@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="App\Entity\Exercise">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>start</value>
+                <value>leadingExercise</value>
+                <value>dayName</value>
+                <value>end</value>
+                <value>rooms</value>
+            </option>
+            <option name="message">Занятието вече е поето</option>
+        </constraint>
+        <property name="end">
+            <constraint name="GreaterThanOrEqual">
+                <option name="propertyPath">start</option>
+                <option name="message">Часа на Завършване трябва да бъде по-голям от Часа на Започване</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

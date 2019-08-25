@@ -6,12 +6,46 @@ use App\Entity\Exercise;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 class ExerciseAdmin extends AbstractAdmin
 {
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+
+        $getCurrentStart=$object->getStart();
+        $getCurrentEnd=$object->getEnd();
+        $getCurrentLeadingExercise=$object->getLeadingExercise()->getId();
+
+//        dump($getCurrentLeadingExercise);
+
+        $sql = "SELECT *
+                FROM exercise
+                WHERE 
+                    leading_exercise_id = $getCurrentLeadingExercise 
+                AND start = '" . "$getCurrentStart'" . "
+                AND " . "'" . "end" . "' = " . "'". "$getCurrentEnd" ."'";
+
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        dump($result);
+
+        if ($getCurrentStart<$getCurrentEnd){
+            $errorElement
+                ->with('start')
+                    ->addViolation('Моля въведете час полям от '. date("Y"))
+                ->end();
+        }
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -24,11 +58,15 @@ class ExerciseAdmin extends AbstractAdmin
                     'label' => 'Стаи',
                     'btn_add' => false
                 ])
-                ->add('start', null, [
+                ->add('start', TimeType::class, [
                     'label' => 'Час на започване',
+                    'input'  => 'string',
+                    'widget' => 'choice',
                 ])
-                ->add('end', null, [
-                    'label' => 'Час на започване',
+                ->add('end', TimeType::class, [
+                    'label' => 'Час на приключване',
+                    'input'  => 'string',
+                    'widget' => 'choice',
                 ])
                 ->add('subGroups', ModelType::class, [
                     'label' => 'Избери Група/Под-група',
@@ -90,4 +128,15 @@ class ExerciseAdmin extends AbstractAdmin
             ->end()
         ;
     }
+
+//    public function prePersist($object)
+//    {
+//        dump($object->getStart());
+//        $object->setEnd($object->getStart()+4);
+//    }
+//
+//    public function preUpdate($object)
+//    {
+//        $object->setEndYear($object->getStartYear()+4);
+//    }
 }
